@@ -9,17 +9,19 @@ return {
   {
       "Hoffs/omnisharp-extended-lsp.nvim",
   },
-  -- These are some examples, uncomment them if you want to see them work!
-
   {
   	"williamboman/mason.nvim",
   	opts = {
   		ensure_installed = {
   			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier",
+  			"html-lsp", "css-lsp", "prettier",
         "omnisharp"
   		},
   	},
+  },
+  {
+      "theprimeagen/harpoon",
+      lazy = false,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -31,14 +33,14 @@ return {
       require "configs.lspconfig"
     end,
   },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+
+  {
+  	"nvim-treesitter/nvim-treesitter",
+  	opts = {
+  		ensure_installed = {
+  			"vim", "lua", "vimdoc",
+       "html", "css"
+  		},
+  	},
+  },
 }
