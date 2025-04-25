@@ -1,5 +1,15 @@
 return {
   {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+        require('lspsaga').setup({})
+    end,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons',     -- optional
+    }
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
@@ -7,21 +17,11 @@ return {
     end,
   },
   {
-      "Hoffs/omnisharp-extended-lsp.nvim",
+    "williamboman/mason.nvim",
   },
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
-  			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp", "prettier",
-        "omnisharp"
-  		},
-  	},
-  },
-  {
-      "theprimeagen/harpoon",
-      lazy = false,
+    "theprimeagen/harpoon",
+    lazy = false,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -32,15 +32,32 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
+    dependencies = {
+	'nvimdev/lspsaga.nvim'
+    }
   },
-
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "typescript",
+        "svelte",
+        "rust",
+        "zig",
+        "sql",
+        "markdown",
+        "json",
+        "dockerfile",
+        "yaml",
+        "toml",
+        "go",
+        "helm"
+      },
+    },
   },
 }
