@@ -2,6 +2,13 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+-- vim tmux
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux navigate left"})
+map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux navigate right"})
+map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux navigate down"})
+map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux navigate up"})
+
+-- indent
 map("v", "<", "<gv", { desc = "Indent Line" })
 map("v", ">", ">gv", { desc = "Indent Line" })
 

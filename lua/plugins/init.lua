@@ -1,5 +1,9 @@
 return {
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false
+  },
+  {
     'nvimdev/lspsaga.nvim',
     config = function()
         require('lspsaga').setup({})
