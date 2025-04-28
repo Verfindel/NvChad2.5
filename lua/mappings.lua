@@ -20,12 +20,18 @@ map("n",
   end,
   { desc = "LSP definition" }
 )
-map("",
+map("n",
   "gi",
   function()
     vim.lsp.buf.implementation()
   end,
   { desc = "LSP implementation"})
+map("n",
+  "gr",
+  function ()
+    vim.lsp.buf.references()
+  end,
+  { desc = "LSP references"})
 map("n",
   "<leader>/",
   function()
@@ -52,3 +58,15 @@ map("v",
   ":m '<-2<CR>gv=gv",
   { desc = "Move selected line / block of text in visual mode up"}
 )
+
+map("n",
+  "<C-a>",
+  function ()
+    vim.lsp.buf.code_action()
+  end)
+
+--Obsidian
+map("v",
+  "<leader>ol",
+  ":ObsidanLink",
+  { desc = "Obsidian linking to existing file."})
