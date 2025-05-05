@@ -84,6 +84,7 @@ return {
         "toml",
         "go",
         "helm",
+        "c_sharp"
       },
     },
   },
