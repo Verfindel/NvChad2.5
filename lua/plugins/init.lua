@@ -1,27 +1,42 @@
 return {
   {
-    "epwalsh/obsidian.nvim",
-    version = "*",  -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    --   "BufReadPre path/to/my-vault/**.md",
-    --   "BufNewFile path/to/my-vault/**.md",
-    -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "work",
-          path = "C:\\Obsidian\\StormGeo",
+    "williamboman/mason.nvim",
+    -- load early so :Mason* commands exist
+    priority = 100,
+    config = function()
+      require("mason").setup {
+        -- custom registries go _before_ the core registry:
+        registries = {
+          "github:Crashdummyy/mason-registry",
+          "github:mason-org/mason-registry",
         },
-      },
+        -- (any other Mason settings go here)
+      }
+    end,
+  },
+  { "lewis6991/gitsigns.nvim", version = "*" },
+  {
+    "seblyng/roslyn.nvim",
+    ft = "cs",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+      -- NOTE: You must configure `cmd` in `config.cmd` unless you have installed via mason
+    },
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
+    "nvimdev/lspsaga.nvim",
+    config = function()
+      require("lspsaga").setup {}
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
     },
   },
   {
@@ -31,22 +46,9 @@ return {
       require "configs.conform"
     end,
   },
-  --{
-  --    "Hoffs/omnisharp-extended-lsp.nvim",
-  --},
   {
-    "seblj/roslyn.nvim",
-    ft = "cs",
-    opts = {
-        -- your configuration comes here; leave empty for default settings
-    }
-  },
-  {
-  	"williamboman/mason.nvim",
-  },
-  {
-      "theprimeagen/harpoon",
-      lazy = false,
+    "theprimeagen/harpoon",
+    lazy = false,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -57,14 +59,32 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
+    dependencies = {
+      "nvimdev/lspsaga.nvim",
+    },
   },
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "typescript",
+        "svelte",
+        "rust",
+        "zig",
+        "sql",
+        "markdown",
+        "json",
+        "dockerfile",
+        "yaml",
+        "toml",
+        "go",
+        "helm",
+      },
+    },
   },
 }
