@@ -15,8 +15,6 @@ local rounded_border_handlers = {
 mason_lspconfig.setup({
   ensure_installed = {
     "lua_ls",
- --   "omnisharp",
- --   "tsserver"
   }
 })
 
