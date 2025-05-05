@@ -1,4 +1,5 @@
 return {
+  { "lewis6991/gitsigns.nvim", version = "*" },
   {
     "christoomey/vim-tmux-navigator",
     lazy = false

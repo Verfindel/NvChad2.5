@@ -13,15 +13,17 @@ map("v", "<", "<gv", { desc = "Indent Line" })
 map("v", ">", ">gv", { desc = "Indent Line" })
 
 -- hover
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(event)
-    map('n', 'K', function()
-      vim.lsp.buf.hover {
-        border = 'rounded',
-      }
-    end, { buffer = event.buf })
-  end,
-})
+--vim.api.nvim_create_autocmd('LspAttach', {
+--  callback = function(event)
+--    map('n', 'K', function()
+--      vim.lsp.buf.hover {
+--        border = 'rounded',
+--      }
+--    end, { buffer = event.buf })
+--  end,
+--})
+
+vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>')
 
 map({ "v", "n" },
   "<leader>ca",
